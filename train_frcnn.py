@@ -16,7 +16,7 @@ import keras_frcnn.roi_helpers as roi_helpers
 from keras.utils import generic_utils
 from keras.callbacks import TensorBoard
 import tensorflow as tf
-from keras_frcnn.pascal_voc_parser import get_data
+from keras_frcnn.simple_parser import get_data
 from keras_frcnn import losses as Losses
 import config
 import math

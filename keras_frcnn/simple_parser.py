@@ -15,7 +15,7 @@ def get_data(input_path):
 		print('Parsing annotation files')
 
 		for line in f:
-			line_split = line.strip().split(',')
+			line_split = line.strip().split(' ')
 			(filename1, class_name, subclass, x1, y1, x2, y2) = line_split
 			data_path = './data/flickr_logos_27_dataset_images/'
 			filename = os.path.join(data_path, filename1)
