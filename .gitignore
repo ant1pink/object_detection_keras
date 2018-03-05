@@ -4,3 +4,4 @@ models/
 *.pyc
 *.pkl
 *.pickle
+log/
