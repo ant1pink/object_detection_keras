@@ -1,0 +1,6 @@
+data/
+models/
+*.png
+*.pyc
+*.pkl
+*.pickle

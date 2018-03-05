@@ -16,7 +16,7 @@ import keras_frcnn.roi_helpers as roi_helpers
 from keras.utils import generic_utils
 from keras.callbacks import TensorBoard
 import tensorflow as tf
-from keras_frcnn.simple_parser import get_data
+from keras_frcnn.simple_parser_47 import get_data
 from keras_frcnn import losses as Losses
 import config
 import math
@@ -28,7 +28,8 @@ from keras_frcnn import nn_arch_vgg16
 
 sys.setrecursionlimit(40000)
 
-def Train_frcnn(train_path = './data/FlickrLogos_47/', # path to the text file containing the data
+def Train_frcnn(train_path = './data/FlickrLogos_47/train/', # path to the text file containing the data
+                class_name = './data/FlickrLogos_47/className2ClassID.txt',
                 network_arch = 'vgg', # the type of the base faster rcnn network architecture
                 num_epochs = 50, # num of epochs
                 output_weight_path = './models/model_frcnn_47.hdf5', # path to save the model_all.weights as hdf5
@@ -174,7 +175,7 @@ def Train_frcnn(train_path = './data/FlickrLogos_47/', # path to the text file c
     if input_weights_path:
         C.initial_weights = input_weights_path
 
-    all_imgs, classes_count, class_mapping = get_data(train_path)
+    all_imgs, classes_count, class_mapping = get_data(train_path, class_name)
     
     print("The class mapping is:")
     print(class_mapping)
