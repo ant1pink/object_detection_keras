@@ -29,29 +29,28 @@ from keras_frcnn import nn_arch_vgg16
 sys.setrecursionlimit(40000)
 
 
-def Train_frcnn(train_path='./data/',  # path to the text file containing the data
-                class_name='./data/className2ClassID.txt',
+def Train_frcnn(train_path='./data2/',  # path to the text file containing the data
+                class_name='./data2/className2ClassID.txt',
                 network_arch='vgg',  # the type of the base faster rcnn network architecture
-                num_epochs=50,  # num of epochs
-                output_weight_path='./models/model_frcnn_47.hdf5',  # path to save the model_all.weights as hdf5
+                num_epochs=3000,  # num of epochs
+                output_weight_path='./models/model_logo_900_128_16.hdf5',  # path to save the model_all.weights as hdf5
                 preprocessing_function=None,
-                config_filename="config_logo.pickle",
-                # input_weights_path = './models/vgg16_weights_tf_dim_ordering_tf_kernels.h5',
-                input_weights_path='./models/model_frcnn_47.hdf5',
+                config_filename="config_logo_900_128_16.pickle",
+                input_weights_path = './models/vgg16_weights_tf_dim_ordering_tf_kernels.h5',
                 train_rpn=True,
                 train_final_classifier=True,
                 train_base_nn=True,
                 losses_to_watch=['rpn_cls', 'rpn_reg', 'final_cls', 'final_reg'],
                 tb_log_dir="log",
-                num_rois=32,
+                num_rois=128,
                 horizontal_flips=False,
                 vertical_flips=False,
                 rot_90=False,
-                anchor_box_scales=[128, 256, 512],
+                anchor_box_scales = [16, 32, 64, 128, 256],
                 anchor_box_ratios=[[1, 1], [1. / math.sqrt(2), 2. / math.sqrt(2)],
                                    [2. / math.sqrt(2), 1. / math.sqrt(2)]],
-                im_size=600,
-                rpn_stride=16,  # depends on network architecture
+                im_size=900,
+                rpn_stride = 16,  # depends on network architecture
                 visualize_model=None,
                 verify_trainable=True,
                 optimizer_rpn=Adam(lr=1e-5),
@@ -59,8 +58,8 @@ def Train_frcnn(train_path='./data/',  # path to the text file containing the da
                 validation_interval=3,
                 rpn_min_overlap=0.3,
                 rpn_max_overlap=0.7,
-                classifier_min_overlap=0.1,
-                classifier_max_overlap=0.5,
+                classifier_min_overlap=0.3,
+                classifier_max_overlap=0.7,
                 rpn_nms_threshold=0.7,  # original implementation
                 seed=5000
                 ):

@@ -29,7 +29,10 @@ def get_data(folder_name, class_name_path):
 			with open(os.path.join(input_path,filename),'r') as f:
 				for line in f:
 					line_split = line.strip().split(' ')
-					(x1, y1, x2, y2) = line_split
+					(x1, y1, w, h) = line_split
+					x2 = int(x1) + int(w)
+					y2 = int(y1) + int(h)
+					print(x1,y1,w,h, x2,y2)
 					class_name = class_name_dict[class_index]
 					imagefile_name = os.path.join(input_path, filename.split('.')[0] + '.jpg')
 					imagefile_name_s =  filename.split('.')[0]+'.jpg'

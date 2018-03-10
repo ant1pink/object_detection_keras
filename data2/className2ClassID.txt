@@ -1,0 +1,3 @@
+Adidas	0
+Nike	1
+Puma	2
