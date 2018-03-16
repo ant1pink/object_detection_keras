@@ -1,0 +1,16 @@
+Starting TensorBoard b'54' at http://0.0.0.0:8000
+(Press CTRL+C to quit)
+Starting TensorBoard b'54' at http://0.0.0.0:8000
+(Press CTRL+C to quit)
+86.177.49.217 - - [12/Mar/2018 21:19:06] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00®\x01\x00\x00ª\x03\x03I÷¥\x03\x10½=\x05\x19J\x9d\x8e'\x96\x83\x05¬\x8eì\x95`\x82@ªî\x8d¤\x93\x07\x8dõ>\x00\x00")
+86.177.49.217 - - [12/Mar/2018 21:19:06] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00®\x01\x00\x00ª\x03\x03PûÎªÁ\x803«\x19\x9f¬Ij¾m\x17\x8dãÿ\x81\x81s\x91\xadÉ§gè±\x16c\x8b\x00\x00')
+86.177.49.217 - - [12/Mar/2018 21:19:08] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00®\x01\x00\x00ª\x03\x03I&\x7f\x95ëÁ¥K?\x11[2òx«ð\x03Ð2æ\x9dîå[\x02\x94ËÂµ¥ÚK\x00\x00')
+ERROR:tensorflow:TensorBoard attempted to bind to port 8000, but it was already in use
+TensorBoard attempted to bind to port 8000, but it was already in use
+Starting TensorBoard b'54' at http://0.0.0.0:8000
+(Press CTRL+C to quit)
+Starting TensorBoard b'54' at http://0.0.0.0:8000
+(Press CTRL+C to quit)
+Starting TensorBoard b'54' at http://0.0.0.0:8000
+(Press CTRL+C to quit)
+5.8.18.77 - - [15/Mar/2018 16:45:35] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')

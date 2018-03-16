@@ -8,7 +8,7 @@ import pickle
 
 from keras import backend as K
 from keras.utils.vis_utils import plot_model
-from keras.optimizers import Adam
+from keras.optimizers import Adam,sgd
 from keras.layers import Input
 from keras.models import Model
 from keras_frcnn import data_generators
@@ -29,37 +29,38 @@ from keras_frcnn import nn_arch_vgg16
 sys.setrecursionlimit(40000)
 
 
-def Train_frcnn(train_path='./data2/',  # path to the text file containing the data
-                class_name='./data2/className2ClassID.txt',
+def Train_frcnn(train_path='./data1/',  # path to the text file containing the data
+                class_name='./data1/className2ClassID.txt',
                 network_arch='vgg',  # the type of the base faster rcnn network architecture
-                num_epochs=3000,  # num of epochs
-                output_weight_path='./models/model_logo_900_128_16.hdf5',  # path to save the model_all.weights as hdf5
+                num_epochs=500,  # num of epochs
+                output_weight_path='./models/model_logo_800_64_16_na.hdf5',  # path to save the model_all.weights as hdf5
                 preprocessing_function=None,
-                config_filename="config_logo_900_128_16.pickle",
+                config_filename="config_logo_800_64_16_na.pickle",
                 input_weights_path = './models/vgg16_weights_tf_dim_ordering_tf_kernels.h5',
                 train_rpn=True,
-                train_final_classifier=True,
+                train_final_classifier = True,
                 train_base_nn=True,
                 losses_to_watch=['rpn_cls', 'rpn_reg', 'final_cls', 'final_reg'],
-                tb_log_dir="log",
-                num_rois=128,
+                #losses_to_watch = ['rpn_cls', 'rpn_reg'],
+                tb_log_dir="log_na",
+                num_rois= 64,
                 horizontal_flips=False,
                 vertical_flips=False,
                 rot_90=False,
                 anchor_box_scales = [16, 32, 64, 128, 256],
                 anchor_box_ratios=[[1, 1], [1. / math.sqrt(2), 2. / math.sqrt(2)],
                                    [2. / math.sqrt(2), 1. / math.sqrt(2)]],
-                im_size=900,
+                im_size=850,
                 rpn_stride = 16,  # depends on network architecture
                 visualize_model=None,
                 verify_trainable=True,
-                optimizer_rpn=Adam(lr=1e-5),
-                optimizer_classifier=Adam(lr=1e-5),
+                optimizer_rpn = Adam(lr=1e-5, decay = 1e-5),
+                optimizer_classifier = Adam(lr=1e-5, decay = 1e-5),
                 validation_interval=3,
                 rpn_min_overlap=0.3,
                 rpn_max_overlap=0.7,
-                classifier_min_overlap=0.3,
-                classifier_max_overlap=0.7,
+                classifier_min_overlap=0.1,
+                classifier_max_overlap=0.5,
                 rpn_nms_threshold=0.7,  # original implementation
                 seed=5000
                 ):
@@ -199,7 +200,7 @@ def Train_frcnn(train_path='./data2/',  # path to the text file containing the d
     np.random.shuffle(all_imgs)
 
     train_imgs = [s for s in all_imgs if s['imageset'] == 'train']
-    val_imgs = [s for s in all_imgs if s['imageset'] == 'test']
+    val_imgs = [s for s in all_imgs if s['imageset'] == 'valid']
 
     print('Num train samples {}'.format(len(train_imgs)))
     print('Num val samples {}'.format(len(val_imgs)))
